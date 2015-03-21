@@ -1,0 +1,12 @@
+---
+
+  - name: Add intro text
+    template: 
+      src=10-help-text.j2
+      dest={{ intro_path }}
+
+  - name: Setup | Install required packages.
+    action: apt pkg={{ item }} state=installed update_cache=yes
+    when: ansible_os_family == "Debian"
+    with_items:
+      - figlet 

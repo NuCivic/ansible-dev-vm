@@ -1,0 +1,40 @@
+---
+- hosts: all
+  user: root
+
+  vars_files:
+      - config.yml
+
+  roles:
+    #- { role: geerlingguy.firewall, tags: ['firewall'] }
+    - { role: geerlingguy.git, tags: ['git'] }
+    - { role: geerlingguy.apache, tags: ['apache'] }
+    - { role: geerlingguy.mysql, tags: ['mysql'] }
+    #- { role: geerlingguy.varnish, tags: ['varnish'] }
+    - { role: geerlingguy.memcached, tags: ['memcached'] }
+    - { role: geerlingguy.php, tags: ['php'] }
+    - { role: geerlingguy.php-pecl, tags: ['php'] }
+    - { role: geerlingguy.php-mysql, tags: ['php'] }
+    - { role: geerlingguy.php-memcached, tags: ['php'] }
+    - { role: geerlingguy.php-xdebug, tags: ['php'] }
+    - { role: geerlingguy.php-xhprof, tags: ['php'] }
+    - { role: geerlingguy.phpmyadmin, tags: ['phpmyadmin'] }
+    - { role: geerlingguy.composer, tags: ['composer'] }
+    - { role: geerlingguy.drush, tags: ['drush'] }
+    - { role: geerlingguy.daemonize, tags: ['mail'] }
+    - { role: geerlingguy.mailhog, tags: ['mail'] }
+    - { role: geerlingguy.tomcat6, tags: ['solr'] }
+    - { role: geerlingguy.solr, tags: ['solr'] }
+    - { role: nucivic }
+
+  tasks:
+
+    # DEBIAN
+    - name: Setup | Install required packages.
+      action: apt pkg={{ item }} state=installed update_cache=yes
+      when: ansible_os_family == "Debian"
+      with_items:
+        - unzip
+        - vim
+        - git
+        - curl

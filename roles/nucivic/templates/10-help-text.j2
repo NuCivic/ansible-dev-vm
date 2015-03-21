@@ -1,0 +1,16 @@
+#!/bin/sh
+#!/bin/sh
+FIGLET=`/usr/bin/dpkg-query -W figlet`
+COMPANY="NuCivc"
+SERVER=`hostname -s`
+if [ "" !=  "$FIGLET" ]; then
+  COMPANY=`figlet $COMPANY`
+  SERVER=`figlet Devel-VM-2.0`
+  HELP=`For bugs are assistance visit https://github.com/nuams/nuams-vm`
+fi
+echo
+echo "Welcome to"
+echo "$SERVER"
+echo "Provided by"
+echo "$COMPANY"
+echo "$HELP"

@@ -1,0 +1,38 @@
+# Vagrant hostname and IP configuration.
+vagrant_hostname: local 
+vagrant_ip: 33.33.33.66 
+
+# A list of synced folders, with the keys 'local_path', 'destination', and 'id'.
+vagrant_synced_folders:
+  - local_path: www 
+    destination: /var/www
+    excluded_paths: [".git/"]
+    id: www 
+    type: nfs 
+
+# Memory and CPU to use for this VM.
+vagrant_memory: 2048 
+vagrant_cpus: 2
+
+php_version: "5.4"
+php_memory_limit: "512M"
+php_display_errors: "On"
+php_realpath_cache_size: "1024K"
+php_sendmail_path: "/usr/sbin/ssmtp -t"
+php_apc_enabled_in_ini: true
+php_apc_shm_size: "128M"
+
+drush_version: "6.2.0"
+
+apache_listen_port: 80
+apache_vhosts:
+  - servername: "local.xhprof.com"
+    documentroot: "/usr/share/php/xhprof_html"
+
+# Disable main XDebug components unless needed.
+php_xdebug_coverage_enable: 0
+php_xdebug_default_enable: 0
+
+mysql_root_password: root
+
+intro_path: "/etc/update-motd.d/10-help-text"
