@@ -1,0 +1,29 @@
+[alias]
+  co = checkout
+  st = status
+  ci = commit
+  ba = branch -a
+  commush = !git commit -a && git push
+  cu = !git commit -a && git push
+  df = !git diff --no-prefix && git diff --staged --no-prefix
+  dw = diff --color-words
+  clear = reset --hard
+  logp = log --oneline --graph
+  logs = log --pretty=format:'%C(yellow)%h%Creset %ad %C(yellow)|%Creset%C(red bold)%d%Creset %s %C(yellow)[%an]%Creset' --graph --date=short
+  lol = log --stat --abbrev-commit
+  stache = !echo "Waxing and twirling..." && echo && git stash $@
+[color]
+  ui = auto
+[core]
+  excludesfile = /home/webadmin/.global_gitignore
+  pager = less -+$LESS -FRX
+[log]
+  decorate = short
+[push]
+  default = tracking
+[diff]
+  renames = copy
+[url "http://git.drupal.org/project/"]
+  insteadOf = "do:"
+[branch]
+  autosetuprebase = always

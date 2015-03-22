@@ -1,0 +1,3 @@
+#! /bin/bash
+
+ctags -R --exclude="*.js" --exclude="tags" --exclude=".git" --exclude="CVS" --exclude=".svn" --langmap=php:.module.install.inc.php.profile.test --PHP-kinds=cidf

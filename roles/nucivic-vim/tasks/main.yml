@@ -1,0 +1,62 @@
+---
+
+  - name: Add vimrc.
+    template: 
+      src=vimrc
+      dest=/home/vagrant/.vimrc
+      
+  - name: Clone Drupal vim from Drupal.
+    git: >
+      repo=http://git.drupal.org/project/vimrc.git
+      dest=/home/vagrant/.drush/vimrc
+    
+  - name: Creates .vim dir 
+    file: path=/home/vagrant/.vim state=directory
+    
+  - name: Creates .vim/autoload dir 
+    file: path=/home/vagrant/.vim/autoload state=directory
+    
+  - name: Creates .vim/bundle dir 
+    file: path=/home/vagrant/.vim/bundle state=directory
+
+  - name: Get Pathogen.
+    get_url:
+      url=https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+      dest=/home/webadmin/.vim/autoload/pathogen.vim
+
+  - name: Clone vim setitings from Github.
+    git: >
+      repo=git@github.com:acouch/vim-drupal.git
+      dest=/home/vagrant/.vim/bundle/drupal-vim
+    
+  - name: Clone nerdtree from Github.
+    git: >
+      repo=https://github.com/scrooloose/nerdtree.git
+      dest=/home/vagrant/.vim/bundle/nerdtree
+    
+  - name: Clone fugative from Github.
+    git: >
+      repo=https://github.com/tpope/vim-fugitive.git
+      dest=/home/vagrant/.vim/bundle/fugative
+    
+  - name: Clone syntastic from Github.
+    git: >
+      repo=https://github.com/scrooloose/syntastic.git
+      dest=/home/vagrant/.vim/bundle/syntastic
+
+  - name: Clone snipmate from Github.
+    git: >
+      repo=https://github.com/msanders/snipmate.vim.git
+      dest=/home/vagrant/.vim/bundle/snipmate
+
+  - name: Clone tagbar from Github.
+    git: >
+      repo=https://github.com/majutsushi/tagbar.git
+      dest=/home/vagrant/.vim/bundle/tagbar
+
+  - name: Clone nerdcommenter from Github.
+    git: >
+      repo=https://github.com/scrooloose/nerdcommenter.git
+      dest=/home/vagrant/.vim/bundle/nerdcommenter
+
+
