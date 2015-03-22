@@ -36,3 +36,5 @@ php_xdebug_default_enable: 0
 mysql_root_password: root
 
 intro_path: "/etc/update-motd.d/10-help-text"
+
+terminus_version:0.5.5

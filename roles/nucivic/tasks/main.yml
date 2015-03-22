@@ -75,3 +75,11 @@
     template: 
       src=make-random-password
       dest=/usr/local/bin/make-random-password
+
+  - name: Check Terminus installed 
+    stat: path=/usr/local/bin/terminus-{{ terminus_version }}
+    register: termins_installed 
+
+  - name: Install Terminus 
+    shell: curl https://github.com/pantheon-systems/cli/releases/download/{{ terminus_version }}/terminus.phar -L -o /usr/local/lib/terminus-{{ terminus_version }}; ln -s /usr/local/lib/terminus-{{ terminus_version }} /usr/local/bin/terminus
+    when: not termins_installed.stat.exists
