@@ -5,81 +5,82 @@
     when: ansible_os_family == "Debian"
     with_items:
       - figlet 
+      - ctags
+      - unzip
+      - vim
+      - git
+      - curl
 
   - name: Add intro text
-    template: 
-      src=10-help-text.j2
-      dest={{ intro_path }}
+    template:  src=10-help-text.j2 dest={{ intro_path }}
 
   - name: My.cnf 
-    template: 
-      src=my.cnf.j2
-      dest=/home/vagrant/.my.cnf
+    template: src=my.cnf.j2 dest=/home/{{ webadmin_user }}/.my.cnf
 
   - name: Clone Buck from GitHub.
     git: >
       repo=git@github.com:NuCivic/buck.git
-      dest=/home/vagrant/.drush/buck
+      dest=/home/{{ webadmin_user }}/.drush/buck
       accept_hostkey=yes
       update=no
 
   - name: Clone CodeSniffer from GitHub.
     git: >
       repo=https://github.com/squizlabs/PHP_CodeSniffer.git
-      dest=/home/vagrant/.composer/vendor/squizlabs
+      dest=/home/{{ webadmin_user }}/.composer/vendor/squizlabs
       update=no
 
   - name: Clone Coder from Drupal.
     git: >
       repo=http://git.drupal.org/project/coder.git
-      dest=/home/vagrant/.drush/coder
+      dest=/home/{{ webadmin_user }}/.drush/coder
       version=7.x-2.x
       update=no
 
   - name: Clone vhost from Github.
     git: >
       repo=https://github.com/NuCivic/vhost.git
-      dest=/home/vagrant/.drush/vhost
+      dest=/home/{{ webadmin_user }}/.drush/vhost
       update=no
 
   - name: Creates .composer/vendor/bin 
-    file: path=/home/vagrant/.composer/vendor/bin state=directory
+    file: path=/home/{{ webadmin_user }}/.composer/vendor/bin state=directory owner={{ webadmin_user }} group={{ webadmin_user }}
 
   - name: Create symlink to phpcs
-    file: src=/home/vagrant/.composer/vendor/squizlabs/scripts/phpcs dest=/home/vagrant/.composer/vendor/bin/phpcs state=link
+    file: src=/home/{{ webadmin_user }}/.composer/vendor/squizlabs/scripts/phpcs dest=/home/{{ webadmin_user }}/.composer/vendor/bin/phpcs state=link owner={{ webadmin_user }} group={{ webadmin_user }}
 
   - name: Create symlink to Drupal coding standards 
-    file: src=/home/vagrant/.drush/coder/coder_sniffer/Drupal dest=/home/vagrant/.composer/vendor/squizlabs/CodeSniffer/Standards/Drupal state=link
+    file: src=/home/{{ webadmin_user }}/.drush/coder/coder_sniffer/Drupal dest=/home/{{ webadmin_user }}/.composer/vendor/squizlabs/CodeSniffer/Standards/Drupal state=link owner={{ webadmin_user }} group={{ webadmin_user }}
 
   - name: Add gitconfig 
-    template: 
-      src=gitconfig
-      dest=/etc/gitconfig
+    template: src=gitconfig dest=/etc/gitconfig 
 
   - name: Add gitignore
-    template: 
-      src=gitignore
-      dest=/usr/share/git-core/templates/info/exclude
+    template: src=gitignore dest=/usr/share/git-core/templates/info/exclude
 
   - name: Add git_attribute
-    template: 
-      src=git_attribute
-      dest=/usr/share/git-core/templates/info/attribute
+    template: src=git_attribute dest=/usr/share/git-core/templates/info/attribute
+
+  - name: Add buck_qa 
+    template: src=buck_qa dest=/usr/local/bin/buck_qa owner={{ webadmin_user }} group={{ webadmin_user }} mode=0755
 
   - name: Add runtags 
-    template: 
-      src=runtags
-      dest=/usr/local/bin/runtags
+    template: src=runtags dest=/usr/local/bin/runtags owner={{ webadmin_user }} group={{ webadmin_user }} mode=0755
 
   - name: Add random-password 
-    template: 
-      src=make-random-password
-      dest=/usr/local/bin/make-random-password
+    template: src=make-random-password dest=/usr/local/bin/make-random-password owner={{ webadmin_user }} group={{ webadmin_user }}
 
   - name: Check Terminus installed 
-    stat: path=/usr/local/bin/terminus-{{ terminus_version }}
+    stat: path=/usr/local/lib/terminus-{{ terminus_version }}
     register: termins_installed 
 
   - name: Install Terminus 
-    shell: curl https://github.com/pantheon-systems/cli/releases/download/{{ terminus_version }}/terminus.phar -L -o /usr/local/lib/terminus-{{ terminus_version }}; ln -s /usr/local/lib/terminus-{{ terminus_version }} /usr/local/bin/terminus
+    shell: curl https://github.com/pantheon-systems/cli/releases/download/{{ terminus_version }}/terminus.phar -L -o /usr/local/lib/terminus-{{ terminus_version }}; 
     when: not termins_installed.stat.exists
+
+  - name: Fix Terminus permissions 
+    file: dest=/usr/local/bin/terminus src=/usr/local/lib/terminus-{{ terminus_version }} owner={{ webadmin_user }} group={{ webadmin_user }} mode=0755 state=link
+    when: termins_installed.stat.exists
+
+  - name: Add bashrc 
+    template: src=bash.bashrc dest={{ bashrc_location }}

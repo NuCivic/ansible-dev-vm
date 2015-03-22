@@ -7,10 +7,13 @@
 
   roles:
     #- { role: geerlingguy.firewall, tags: ['firewall'] }
+    #- { role: geerlingguy.varnish, tags: ['varnish'] }
+    #- { role: geerlingguy.tomcat6, tags: ['solr'] }
+    #- { role: geerlingguy.solr, tags: ['solr'] }
+    
     - { role: geerlingguy.git, tags: ['git'] }
     - { role: geerlingguy.apache, tags: ['apache'] }
     - { role: geerlingguy.mysql, tags: ['mysql'] }
-    #- { role: geerlingguy.varnish, tags: ['varnish'] }
     - { role: geerlingguy.memcached, tags: ['memcached'] }
     - { role: geerlingguy.php, tags: ['php'] }
     - { role: geerlingguy.php-pecl, tags: ['php'] }
@@ -23,18 +26,5 @@
     - { role: geerlingguy.drush, tags: ['drush'] }
     - { role: geerlingguy.daemonize, tags: ['mail'] }
     - { role: geerlingguy.mailhog, tags: ['mail'] }
-    #- { role: geerlingguy.tomcat6, tags: ['solr'] }
-    #- { role: geerlingguy.solr, tags: ['solr'] }
     - { role: nucivic }
-
-  tasks:
-
-    # DEBIAN
-    - name: Setup | Install required packages.
-      action: apt pkg={{ item }} state=installed update_cache=yes
-      when: ansible_os_family == "Debian"
-      with_items:
-        - unzip
-        - vim
-        - git
-        - curl
+    - { role: nucivic-vim }

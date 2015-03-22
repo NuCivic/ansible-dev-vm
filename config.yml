@@ -37,4 +37,10 @@ mysql_root_password: root
 
 intro_path: "/etc/update-motd.d/10-help-text"
 
-terminus_version:0.5.5
+terminus_version: 0.5.5
+
+webadmin_user: vagrant
+
+#bashrc_location: /etc/bashrc
+bashrc_location: /etc/bash.bashrc 
+
