@@ -14,7 +14,7 @@ require 'rbconfig'
 is_windows = (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
 
 # Uncomment if using virtualbox
-vmware = true 
+vmware = false
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -66,9 +66,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.cpus = vconfig['vagrant_cpus']
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.customize ["modifyvm", :id, "--ioapic", "on"]
+    config.vm.box = "trusty-server-cloudimg-amd64"
+	config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
   end
 
   # Set the name of the VM. See: http://stackoverflow.com/a/17864388/100134
-  config.vm.define :nucvicdev do |nucvicdev_config|
+  config.vm.define :nucivicdev do |nucivicdev_config|
   end
 end

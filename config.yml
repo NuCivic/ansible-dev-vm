@@ -1,11 +1,11 @@
 # Vagrant hostname and IP configuration.
-vagrant_hostname: local 
-vagrant_ip: 33.33.33.66 
+vagrant_hostname: local
+vagrant_ip: 33.33.33.66
 
 # A list of synced folders, with the keys 'local_path', 'destination', and 'id'.
 vagrant_synced_folders:
   - local_path: www 
-    destination: /var/www
+    destination: /var/www/docroot
     excluded_paths: [".git/"]
     id: www 
     type: nfs 
