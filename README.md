@@ -1,8 +1,11 @@
 ## Usage
 
   1. Install [vmware fusion](http://www.vmware.com/products/fusion/), [Vagrant](https://www.vagrantup.com/downloads.html), and [Ansible](http://docs.ansible.com/intro_installation.html):
-    - `$ brew cask install virtualbox vagrant`
-    - `$ brew install ansible`
+    * OS X
+      - `$ brew cask install virtualbox vagrant`
+      - `$ brew install ansible`
+    * Ubuntu
+      - `$ sudo aptitude install virtualbox ansible vagrant`
   2. Install all the roles required by this playbook with the command `$ ansible-galaxy install -r requirements.txt`
   3. Install vmware plugin ``vagrant plugin install vagrant-vmware-fusion``
   4. Install vmware license ``vagrant plugin license vagrant-vmware-fusion license.lic``
