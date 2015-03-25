@@ -1,0 +1,13 @@
+---
+
+  - name: Setup | Install required packages.
+    action: apt pkg={{ item }} state=installed update_cache=yes
+    when: ansible_os_family == "Debian"
+    with_items:
+      - tomcat6 
+      - tomcat6-admin 
+
+ - name: Add create-solr-instance 
+    template: 
+      src=create-solr-instance
+      dest=/usr/local/bin/create-solr-instance owner={{ webadmin_user }} group={{ webadmin_user }} mode=0440
