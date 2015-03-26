@@ -4,7 +4,7 @@
     action: apt pkg={{ item }} state=installed update_cache=yes
     when: ansible_os_family == "Debian"
     with_items:
-      - figlet 
+      - figlet
       - ctags
       - unzip
       - vim
@@ -14,12 +14,12 @@
   - name: Add intro text
     template:  src=10-help-text.j2 dest={{ intro_path }}
 
-  - name: My.cnf 
+  - name: My.cnf
     template: src=my.cnf.j2 dest=/home/{{ webadmin_user }}/.my.cnf
 
   - name: Clone Buck from GitHub.
     git: >
-      repo=git@github.com:NuCivic/buck.git
+      repo=https://github.com/NuCivic/buck.git
       dest=/home/{{ webadmin_user }}/.drush/buck
       accept_hostkey=yes
       update=no
@@ -43,17 +43,17 @@
       dest=/home/{{ webadmin_user }}/.drush/vhost
       update=no
 
-  - name: Creates .composer/vendor/bin 
+  - name: Creates .composer/vendor/bin
     file: path=/home/{{ webadmin_user }}/.composer/vendor/bin state=directory owner={{ webadmin_user }} group={{ webadmin_user }}
 
   - name: Create symlink to phpcs
     file: src=/home/{{ webadmin_user }}/.composer/vendor/squizlabs/scripts/phpcs dest=/home/{{ webadmin_user }}/.composer/vendor/bin/phpcs state=link owner={{ webadmin_user }} group={{ webadmin_user }}
 
-  - name: Create symlink to Drupal coding standards 
+  - name: Create symlink to Drupal coding standards
     file: src=/home/{{ webadmin_user }}/.drush/coder/coder_sniffer/Drupal dest=/home/{{ webadmin_user }}/.composer/vendor/squizlabs/CodeSniffer/Standards/Drupal state=link owner={{ webadmin_user }} group={{ webadmin_user }}
 
-  - name: Add gitconfig 
-    template: src=gitconfig dest=/etc/gitconfig 
+  - name: Add gitconfig
+    template: src=gitconfig dest=/etc/gitconfig
 
   - name: Add gitignore
     template: src=gitignore dest=/usr/share/git-core/templates/info/exclude
@@ -61,26 +61,26 @@
   - name: Add git_attribute
     template: src=git_attribute dest=/usr/share/git-core/templates/info/attribute
 
-  - name: Add buck_qa 
+  - name: Add buck_qa
     template: src=buck_qa dest=/usr/local/bin/buck_qa owner={{ webadmin_user }} group={{ webadmin_user }} mode=0755
 
-  - name: Add runtags 
+  - name: Add runtags
     template: src=runtags dest=/usr/local/bin/runtags owner={{ webadmin_user }} group={{ webadmin_user }} mode=0755
 
-  - name: Add random-password 
+  - name: Add random-password
     template: src=make-random-password dest=/usr/local/bin/make-random-password owner={{ webadmin_user }} group={{ webadmin_user }}
 
-  - name: Check Terminus installed 
+  - name: Check Terminus installed
     stat: path=/usr/local/lib/terminus-{{ terminus_version }}
-    register: termins_installed 
+    register: termins_installed
 
-  - name: Install Terminus 
-    shell: curl https://github.com/pantheon-systems/cli/releases/download/{{ terminus_version }}/terminus.phar -L -o /usr/local/lib/terminus-{{ terminus_version }}; 
+  - name: Install Terminus
+    shell: curl https://github.com/pantheon-systems/cli/releases/download/{{ terminus_version }}/terminus.phar -L -o /usr/local/lib/terminus-{{ terminus_version }};
     when: not termins_installed.stat.exists
 
-  - name: Fix Terminus permissions 
+  - name: Fix Terminus permissions
     file: dest=/usr/local/bin/terminus src=/usr/local/lib/terminus-{{ terminus_version }} owner={{ webadmin_user }} group={{ webadmin_user }} mode=0755 state=link
     when: termins_installed.stat.exists
 
-  - name: Add bashrc 
+  - name: Add bashrc
     template: src=bash.bashrc dest={{ bashrc_location }}
