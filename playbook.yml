@@ -28,3 +28,4 @@
     - { role: geerlingguy.mailhog, tags: ['mail'] }
     - { role: nucivic }
     - { role: nucivic-vim }
+    - { role: nucivic-solr }

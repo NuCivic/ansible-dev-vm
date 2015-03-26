@@ -7,7 +7,27 @@
       - tomcat6 
       - tomcat6-admin 
 
- - name: Add create-solr-instance 
+  - name: Add create-solr-instance.
     template: 
       src=create-solr-instance
-      dest=/usr/local/bin/create-solr-instance owner={{ webadmin_user }} group={{ webadmin_user }} mode=0440
+      dest=/usr/local/bin/create-solr-instance owner={{ webadmin_user }} group={{ webadmin_user }} mode=0755 
+
+  - name: Clone sapi-base-7 from GitHub.
+    git: >
+      repo=https://github.com/zivtech/Solr-base.git
+      dest=/opt/solr/sapi-solrbase-7
+      version=80e7f0e343f47364ee707dc10ef3b8994784bd7c
+      update=no
+
+  - name: Clone solr-base-7 from GitHub.
+    git: >
+      repo=https://github.com/zivtech/Solr-base.git
+      dest=/opt/solr/solrbase-7
+      version=072b12bd14e6029531609b8a81b3beab35f0b9e7
+      update=no
+
+  - name: Creates tomcat folder 
+    file: path=/var/lib/tomcat6/webapps state=directory  owner={{ webadmin_user }} group={{ webadmin_user }}
+
+  - name: Creates catalina folder 
+    file: path=/etc/tomcat6/Catalina/localhost state=directory  owner={{ webadmin_user }} group={{ webadmin_user }}

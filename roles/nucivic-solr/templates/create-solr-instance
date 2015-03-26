@@ -4,19 +4,11 @@ if [ ! $1 ] ; then
   echo "Please specify a name for this instance, version and optionally include 'sapi' if this is a sapi instance."
   exit
 fi
-if [ ! $2 ] ; then
-  echo "You must specify the drupal version for this solr instance. EXAMPLE 'create-solr-instance myinstance 6'.  If this is a searchapi instance, add that after the number (eg 'create-solr-instance myinstance 7 sapi'."
-  exit
-fi
-if [ $2 != '6' ] && [ $2 != '7' ] ; then
-  echo "Invalid drupal version. This script supports drupal 6 and 7 only."
-  exit
-fi
 # Figure out which solr instance to copy
-BASEPATH=/opt/solr/solrbase-$2/
+BASEPATH=/opt/solr/solrbase-7/
 if [ -n "$3" ] ; then
-  if [ $2 = '7' ] && [ $3 = 'sapi' ] ; then
-    BASEPATH=/opt/solr/sapi-solrbase-$2/
+  if [ $3 = 'sapi' ] ; then
+    BASEPATH=/opt/solr/sapi-solrbase-7/
   else
     echo "Unsupported sapi version"
     exit 1
@@ -32,4 +24,4 @@ chmod g+xw /opt/solr/solr-$1
 chown -R :tomcat6 /opt/solr/solr-$1
 chmod -R g+w /opt/solr/solr-$1
 sudo /etc/init.d/tomcat6 restart
-echo "A solr instance has been created and can be visited on this server at :8080/solr-$1"
+echo "A solr instance has been created and can be visited on this server at :8983/solr-$1"
