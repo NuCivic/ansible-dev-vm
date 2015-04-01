@@ -13,7 +13,7 @@
   2. Install all the roles required by this playbook with the command `$ ansible-galaxy install -r requirements.txt`
   3. Install vmware plugin ``vagrant plugin install vagrant-vmware-fusion``
   4. Install vmware license ``vagrant plugin license vagrant-vmware-fusion license.lic``
-  5. Run! ``vagrant up``
+  5. Run! ``vagrant up --provider vmware_fusion``
 
 
 #### Vagrant ssh
