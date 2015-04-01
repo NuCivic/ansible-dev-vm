@@ -1,7 +1,11 @@
 ## Usage
 
   1. Install [vmware fusion](http://www.vmware.com/products/fusion/), [Vagrant](https://www.vagrantup.com/downloads.html), and [Ansible](http://docs.ansible.com/intro_installation.html):
-    * OS X
+    * OSX (VMWare Fusion)
+      - Install VMWare Fusion 6
+      -  `$ brew install vagrant`
+      -  `$ brew install ansible`
+    * OS X (virtualbox)
       - `$ brew cask install virtualbox vagrant`
       - `$ brew install ansible`
     * Ubuntu
