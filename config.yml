@@ -23,6 +23,7 @@ php_apc_enabled_in_ini: true
 php_apc_shm_size: "128M"
 
 drush_version: "6.2.0"
+drush_keep_updated: yes
 
 apache_listen_port: 80
 apache_vhosts:
