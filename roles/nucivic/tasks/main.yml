@@ -22,26 +22,26 @@
       repo=https://github.com/NuCivic/buck.git
       dest=/home/{{ webadmin_user }}/.drush/buck
       accept_hostkey=yes
-      update=no
+      update=yes
 
   - name: Clone CodeSniffer from GitHub.
     git: >
       repo=https://github.com/squizlabs/PHP_CodeSniffer.git
       dest=/home/{{ webadmin_user }}/.composer/vendor/squizlabs
-      update=no
+      update=yes
 
   - name: Clone Coder from Drupal.
     git: >
       repo=http://git.drupal.org/project/coder.git
       dest=/home/{{ webadmin_user }}/.drush/coder
       version=7.x-2.x
-      update=no
+      update=yes
 
   - name: Clone vhost from Github.
     git: >
       repo=https://github.com/NuCivic/vhost.git
       dest=/home/{{ webadmin_user }}/.drush/vhost
-      update=no
+      update=yes
 
   - name: Creates .composer/vendor/bin
     file: path=/home/{{ webadmin_user }}/.composer/vendor/bin state=directory owner={{ webadmin_user }} group={{ webadmin_user }}
