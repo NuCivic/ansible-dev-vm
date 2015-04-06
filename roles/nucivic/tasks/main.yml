@@ -43,6 +43,12 @@
       dest=/home/{{ webadmin_user }}/.drush/vhost
       update=yes
 
+  - name: Gives .composer right ownership
+    file: path=/home/{{ webadmin_user }}/.composer state=directory owner={{ webadmin_user }} group={{ webadmin_user }}
+
+  - name: Gives .drush right ownership
+    file: path=/home/{{ webadmin_user }}/.drush state=directory owner={{ webadmin_user }} group={{ webadmin_user }}
+
   - name: Creates .composer/vendor/bin
     file: path=/home/{{ webadmin_user }}/.composer/vendor/bin state=directory owner={{ webadmin_user }} group={{ webadmin_user }}
 
