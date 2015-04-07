@@ -1,3 +1,7 @@
 #!/bin/bash
 
+PROJECT=$1
+ISSUE=$2
+DB_NAME=`echo $ISSUE | cut -c1-10`
 
+drush -y @$PROJECT.local buck --branch=$ISSUE --root=/var/www/$PROJECT/$ISSUE --db-name=$DB_NAME --uri=$PROJECT.$ISSUE.local
