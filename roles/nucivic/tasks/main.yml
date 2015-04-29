@@ -24,6 +24,20 @@
       accept_hostkey=yes
       update=yes
 
+  - name: Clone Drush Subtree from GitHub.
+    git: >
+      repo=https://github.com/WhiteHouse/drushsubtree.git
+      dest=/home/{{ webadmin_user }}/.drush/drushsubtree
+      accept_hostkey=yes
+      update=yes
+
+  - name: Clone Build Manager from GitHub.
+    git: >
+      repo=https://github.com/WhiteHouse/buildmanager.git
+      dest=/home/{{ webadmin_user }}/.drush/buildmanager
+      accept_hostkey=yes
+      update=yes
+
   - name: Clone CodeSniffer from GitHub.
     git: >
       repo=https://github.com/squizlabs/PHP_CodeSniffer.git
