@@ -45,3 +45,6 @@ webadmin_user: vagrant
 #bashrc_location: /etc/bashrc
 bashrc_location: /etc/bash.bashrc 
 
+# nodejs
+nodejs_version: "0.12.2"           # nodejs version to install.
+nodejs_install_method: "binary"     # "package" or "source" or "binary"
