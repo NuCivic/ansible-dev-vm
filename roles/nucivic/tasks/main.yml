@@ -104,3 +104,6 @@
 
   - name: Add bashrc
     template: src=bash.bashrc dest={{ bashrc_location }}
+
+  - name: Give {{ webadmin_user }} ownership of sites-available 
+    file: path=/etc/apache2/sites-available state=directory owner={{ webadmin_user }} group={{ webadmin_user }}
