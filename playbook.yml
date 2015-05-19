@@ -10,7 +10,7 @@
     #- { role: geerlingguy.varnish, tags: ['varnish'] }
     #- { role: geerlingguy.tomcat6, tags: ['solr'] }
     #- { role: geerlingguy.solr, tags: ['solr'] }
-    
+
     - { role: geerlingguy.git, tags: ['git'] }
     - { role: geerlingguy.apache, tags: ['apache'] }
     - { role: geerlingguy.mysql, tags: ['mysql'] }
@@ -26,6 +26,7 @@
     - { role: geerlingguy.drush, tags: ['drush'] }
     - { role: geerlingguy.daemonize, tags: ['mail'] }
     - { role: geerlingguy.mailhog, tags: ['mail'] }
+    - { role: ANXS.nodejs, tags: ['nodejs'] }
     - { role: nucivic }
     - { role: nucivic-vim }
     - { role: nucivic-solr }

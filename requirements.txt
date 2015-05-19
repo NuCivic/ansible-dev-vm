@@ -18,3 +18,4 @@ geerlingguy.mailhog
 geerlingguy.java
 geerlingguy.tomcat6
 geerlingguy.solr
+ANXS.nodejs
