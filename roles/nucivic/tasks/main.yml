@@ -24,6 +24,13 @@
       accept_hostkey=yes
       update=yes
 
+  - name: Clone Drush Sync Aliases from GitHub.
+    git: >
+      repo=https://github.com/acouch/sync_aliases.git
+      dest=/home/{{ webadmin_user }}/.drush/sync_aliases
+      accept_hostkey=yes
+      update=yes
+
   - name: Clone Drush Subtree from GitHub.
     git: >
       repo=https://github.com/WhiteHouse/drushsubtree.git
