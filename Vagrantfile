@@ -52,8 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # VMWare Fusion.
   config.vm.provider :vmware_fusion do |v, override|
-    # TODO: Use same box as other providers, once I Packerize vmware version.
-    override.vm.box = "chef/ubuntu-14.04"
+    override.vm.box = "ubuntu/trusty64"
     v.gui = false
     v.vmx["memsize"] = vconfig['vagrant_memory']
     v.vmx["numvcpus"] = vconfig['vagrant_cpus']
