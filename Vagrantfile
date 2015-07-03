@@ -52,7 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # VMWare Fusion.
   config.vm.provider :vmware_fusion do |v, override|
-    override.vm.box = "ubuntu/trusty64"
+    override.vm.box = "geerlingguy/ubuntu1404"
     v.gui = false
     v.vmx["memsize"] = vconfig['vagrant_memory']
     v.vmx["numvcpus"] = vconfig['vagrant_cpus']
