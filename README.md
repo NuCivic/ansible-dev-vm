@@ -1,5 +1,7 @@
 ## Usage
 
+Get the [license.lic](https://github.com/NuCivic/nuams-vm/blob/1.1/license.lic)
+
 ### VMWare
   1. Install [vmware fusion](http://www.vmware.com/products/fusion/), [Vagrant](https://www.vagrantup.com/downloads.html), and [Ansible](http://docs.ansible.com/intro_installation.html):
     * OSX (VMWare Fusion)
