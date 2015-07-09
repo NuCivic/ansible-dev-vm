@@ -1,3 +1,9 @@
+- name: Setup | Install required packages.
+  action: apt pkg={{ item }} state=installed update_cache=yes
+  when: ansible_os_family == "Debian"
+  with_items:
+    - ruby-dev 
+
 - gem: name=breakpoint state=latest
 - gem: name=bootstrap-sass state=latest
 - gem: name=breakpoint  state=latest
