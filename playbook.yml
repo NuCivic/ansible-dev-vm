@@ -27,6 +27,7 @@
     - { role: geerlingguy.daemonize, tags: ['mail'] }
     - { role: geerlingguy.mailhog, tags: ['mail'] }
     - { role: ANXS.nodejs, tags: ['nodejs'] }
+    - { role: rvm_io.rvm1-ruby, tags: ruby, sudo: True }
     - { role: nucivic }
     - { role: nucivic-vim }
     - { role: nucivic-solr }

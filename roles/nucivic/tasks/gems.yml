@@ -3,14 +3,33 @@
   when: ansible_os_family == "Debian"
   with_items:
     - ruby-dev 
+    - zlib1g-dev
+    - build-essential
+    - libssl-dev
+    - libreadline-dev
+    - libyaml-dev
+    - libsqlite3-dev
+    - sqlite3
+    - libxml2-dev
+    - libxslt1-dev
+    - libcurl4-openssl-dev
+    - python-software-properties
+    - libgdbm-dev
+    - libncurses5-dev
+    - automake
+    - libtool
+    - bison
+    - libffi-dev
 
 - gem: name=breakpoint state=latest
 - gem: name=bootstrap-sass state=latest
 - gem: name=breakpoint  state=latest
 - gem: name=bundler  state=latest
+- gem: name=compass  state=latest
 - gem: name=compass-rgbapng  state=latest
 - gem: name=compass_radix  state=latest
 - gem: name=font-awesome-sass  state=latest
+- gem: name=sassy  state=latest
 - gem: name=sassy-maps  state=latest
 - gem: name=sassy-buttons  state=latest
 - gem: name=singularitygs  state=latest

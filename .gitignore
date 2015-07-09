@@ -2,3 +2,4 @@
 www/*
 # add this to allow for updating without clobbering config files
 config.yml
+license.lic
