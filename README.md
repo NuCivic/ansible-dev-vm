@@ -3,7 +3,6 @@
 Get the [license.lic](https://github.com/NuCivic/nuams-vm/blob/1.1/license.lic)
 
 ### VMWare
-  1. Install [vmware fusion](http://www.vmware.com/products/fusion/), [Vagrant](https://www.vagrantup.com/downloads.html), and [Ansible](http://docs.ansible.com/intro_installation.html):
     * OSX (VMWare Fusion)
       - Install VMWare Fusion 6
       -  `$ brew install vagrant`
@@ -47,3 +46,6 @@ Example:
 
 for dmv on VMware
 
+## Configuration tips
+
+At least 4 Gigs seems to be the optimal amount of memory to assign in config.yml. Also, if you experience slow performace, try opening the vmware-fusion app (if that's the provider you're using) and adjust the processor settings. 
