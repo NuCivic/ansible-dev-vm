@@ -1,4 +1,5 @@
 ---
+  - include: 'gems.yml'
 
   - name: Setup | Install required packages.
     action: apt pkg={{ item }} state=installed update_cache=yes

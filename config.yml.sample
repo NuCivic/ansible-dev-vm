@@ -50,3 +50,7 @@ bashrc_location: /etc/bash.bashrc
 # nodejs
 nodejs_version: "0.12.2"           # nodejs version to install.
 nodejs_install_method: "binary"     # "package" or "source" or "binary"
+
+# ruby
+rvm1_rubies:
+  - 'ruby-2.1.3'

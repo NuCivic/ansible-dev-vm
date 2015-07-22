@@ -1,0 +1,21 @@
+- name: Setup | Install required packages.
+  action: apt pkg={{ item }} state=installed update_cache=yes
+  when: ansible_os_family == "Debian"
+  with_items:
+    - ruby-dev 
+    - zlib1g-dev
+
+- name: install required gems
+  gem: name={{item}} state=present user_install=no
+  with_items:
+    - bootstrap-sass
+    - bundler
+    - compass
+    - compass-rgbapng
+    - compass_radix
+    - font-awesome-sass
+    - sassy
+    - sassy-maps
+    - sassy-buttons
+    - singularitygs
+    - zen-grids
