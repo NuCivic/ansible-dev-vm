@@ -10,13 +10,13 @@ Get the [license.lic](https://github.com/NuCivic/nuams-vm/blob/1.1/license.lic)
     * OS X (virtualbox)
       - `$ brew cask install virtualbox vagrant`
       - `$ brew install ansible`
-  2. Install all the roles required by this playbook with the command `$ ansible-galaxy install -r requirements.txt`
-  3. Install vmware plugin ``vagrant plugin install vagrant-vmware-fusion``
-  4. Install vmware license ``vagrant plugin license vagrant-vmware-fusion license.lic``
-  5. Create a config file based on config.yml.sample
-  6. Run! ``vagrant up --provider vmware_fusion``
-  7. You will need to run ``vagrant provision`` an additional time. Ref: https://github.com/NuCivic/ansible-dev-vm/issues/26
-  8. When you ``vagrant ssh`` you should see:
+  1. Install vmware plugin ``vagrant plugin install vagrant-vmware-fusion``
+  2. Install vmware license ``vagrant plugin license vagrant-vmware-fusion license.lic``
+  3. Install all the roles required by this playbook with the command `$ ansible-galaxy install -r requirements.txt`
+  4. Create a config file based on config.yml.sample
+  5. Run! ``vagrant up --provider vmware_fusion`` or ``vagrant up`` on virtual box
+  6. You will need to run ``vagrant provision`` an additional time. Ref: https://github.com/NuCivic/ansible-dev-vm/issues/26
+  7. When you ``vagrant ssh`` you should see:
 ```
 Welcome to
  ____               __     ____  __      ____    ___
@@ -39,7 +39,7 @@ Provided by
   1. Install [Virtualbox](https://www.virtualbox.org/), [Vagrant](https://www.vagrantup.com/downloads.html), and [Ansible](http://docs.ansible.com/intro_installation.html):
     * Ubuntu
       - `$ sudo aptitude install virtualbox ansible vagrant`
-  2. Start at step #2 for VMWare above
+  2. Start at step #3 for VMWare above
 
 
 #### Vagrant ssh
