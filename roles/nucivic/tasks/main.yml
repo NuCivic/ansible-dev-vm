@@ -65,6 +65,11 @@
       dest=/home/{{ webadmin_user }}/.drush/vhost
       update=yes
 
+  - name: Add Drush bash completion.
+    command: cp /usr/local/share/drush/drush.complete.sh /etc/bash_completion.d/
+    args:
+      creates: /etc/bash_completion.d/drush.complete.sh
+
   - name: Gives .composer right ownership
     file: path=/home/{{ webadmin_user }}/.composer state=directory owner={{ webadmin_user }} group={{ webadmin_user }}
 
