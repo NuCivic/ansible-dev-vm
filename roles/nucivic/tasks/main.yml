@@ -38,6 +38,14 @@
       dest=/home/{{ webadmin_user }}/.drush/drushsubtree
       accept_hostkey=yes
       update=yes
+      
+  - name: Clone Registry Rebuild from Drupal.
+    git: >
+      repo=http://git.drupal.org/project/registry_rebuild.git
+      dest=/home/{{ webadmin_user }}/.drush/registry_rebuild
+      accept_hostkey=yes
+      branch=7.x-2.x
+      update=yes 
 
   - name: Clone Build Manager from GitHub.
     git: >
