@@ -44,7 +44,7 @@
       repo=http://git.drupal.org/project/registry_rebuild.git
       dest=/home/{{ webadmin_user }}/.drush/registry_rebuild
       accept_hostkey=yes
-      branch=7.x-2.x
+      version=7.x-2.x
       update=yes 
 
   - name: Clone Build Manager from GitHub.
