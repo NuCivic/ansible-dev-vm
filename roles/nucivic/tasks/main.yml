@@ -128,3 +128,6 @@
 
   - name: Give {{ webadmin_user }} ownership of sites-available 
     file: path=/etc/apache2/sites-available state=directory owner={{ webadmin_user }} group={{ webadmin_user }}
+
+  - name: Enable mod_rewrite.
+    command: a2emod rewrite
