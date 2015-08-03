@@ -25,6 +25,12 @@
       accept_hostkey=yes
       update=yes
 
+  - name: Install Buck Dependencies.
+    command: composer install
+    args:
+      chdir: /home/{{ webadmin_user }}/.drush/buck
+      creates: /home/{{ webadmin_user }}/.drush/vendor
+
   - name: Clone Drush Sync Aliases from GitHub.
     git: >
       repo=https://github.com/acouch/sync_aliases.git
