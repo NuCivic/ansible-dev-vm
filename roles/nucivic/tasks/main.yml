@@ -136,4 +136,4 @@
     file: path=/etc/apache2/sites-available state=directory owner={{ webadmin_user }} group={{ webadmin_user }}
 
   - name: Enable mod_rewrite.
-    command: a2emod rewrite
+    command: a2enmod rewrite
