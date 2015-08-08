@@ -150,6 +150,7 @@ fi
 alias ll='ls -l'
 alias la='ls -ahl'
 #alias l='ls -CF'
+if hash hub 2> /dev/null; then alias git=hub; fi
 alias vim='vim -O'
 
 export EDITOR="vi"
