@@ -153,3 +153,14 @@ alias la='ls -ahl'
 alias vim='vim -O'
 
 export EDITOR="vi"
+
+# Only add composer bin folder to path if it hasn't been added already.
+composer_bin=~/.composer/vendor/bin
+if [ -d $composer_bin ]; then
+  case ":${PATH:=$composer_bin}:" in
+    *:$new:*)  ;;
+    *) PATH="$composer_bin:$PATH"  ;;
+  esac
+
+  export PATH=~/.composer/bin:$PATH
+fi
