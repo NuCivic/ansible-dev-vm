@@ -20,6 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.hostname = vconfig['vagrant_hostname']
   config.vm.network :private_network, ip: vconfig['vagrant_ip']
+  config.vm.box = "dkinzer/ansible-dev-vm"
 
   config.vm.provider "vmware_fusion" do |v|
     v.vmx["memsize"] = vconfig['vagrant_memory']
@@ -52,8 +53,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # VMWare Fusion.
   config.vm.provider :vmware_fusion do |v, override|
-    # TODO: Use same box as other providers, once I Packerize vmware version.
-    override.vm.box = "geerlingguy/ubuntu1404"
     v.gui = false
     v.vmx["memsize"] = vconfig['vagrant_memory']
     v.vmx["numvcpus"] = vconfig['vagrant_cpus']
@@ -66,8 +65,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.cpus = vconfig['vagrant_cpus']
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.customize ["modifyvm", :id, "--ioapic", "on"]
-    config.vm.box = "trusty-server-cloudimg-amd64"
-    config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
   end
 
   # Set the name of the VM. See: http://stackoverflow.com/a/17864388/100134
