@@ -34,6 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   for synced_folder in vconfig['vagrant_synced_folders'];
     config.vm.synced_folder synced_folder['local_path'], synced_folder['destination'],
       type: synced_folder['type'],
+      :linux__nfs_options => ["rw","no_root_squash","no_subtree_check"],
       rsync__auto: "true",
       rsync__exclude: synced_folder['excluded_paths'],
       rsync__args: ["--verbose", "--archive", "--delete", "-z", "--chmod=ugo=rwX"],
