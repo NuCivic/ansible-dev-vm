@@ -158,9 +158,7 @@ export EDITOR="vi"
 composer_bin=~/.composer/vendor/bin
 if [ -d $composer_bin ]; then
   case ":${PATH:=$composer_bin}:" in
-    *:$new:*)  ;;
-    *) PATH="$composer_bin:$PATH"  ;;
+    *:$composer_bin:*)  ;;
+    *) export PATH="$composer_bin:$PATH"  ;;
   esac
-
-  export PATH=~/.composer/bin:$PATH
 fi
