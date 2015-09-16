@@ -154,6 +154,7 @@ if hash hub 2> /dev/null; then alias git=hub; fi
 alias vim='vim -O'
 
 export EDITOR="vi"
+export ENVIRONMENT='local'
 
 # Only add composer bin folder to path if it hasn't been added already.
 composer_bin=~/.composer/vendor/bin
