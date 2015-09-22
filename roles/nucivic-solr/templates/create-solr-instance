@@ -24,4 +24,4 @@ chmod g+xw /opt/solr/solr-$1
 chown -R :tomcat6 /opt/solr/solr-$1
 chmod -R g+w /opt/solr/solr-$1
 sudo /etc/init.d/tomcat6 restart
-echo "A solr instance has been created and can be visited on this server at :8983/solr-$1"
+echo "A solr instance has been created and can be visited on this server at http://localhost:8080/solr-$1"
