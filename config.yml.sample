@@ -40,7 +40,7 @@ mysql_root_password: root
 
 intro_path: "/etc/update-motd.d/10-help-text"
 
-terminus_version: 0.5.5
+terminus_version: 0.8.0
 
 webadmin_user: vagrant
 
