@@ -1,8 +1,10 @@
 # System-wide .bashrc file for interactive bash(1) shells.
 
 # make bash autocomplete with up arrow/down arrow
-bind '"\e[A":history-search-backward'
-bind '"\e[B":history-search-forward'
+if [ -n "$PS1" ]; then
+  bind '"\e[A":history-search-backward'
+  bind '"\e[B":history-search-forward'
+fi
 
 # To enable the settings / commands in this file for login shells as well,
 # this file has to be sourced in /etc/profile.
