@@ -10,6 +10,8 @@
       - unzip
       - vim
       - git
+      - firefox
+      - xvfb
       - curl
 
   - name: Add intro text
